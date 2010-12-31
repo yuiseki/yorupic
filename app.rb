@@ -16,6 +16,8 @@ $users = {'yuiseki'=>'4598697423011019361',
 	'mapi'=>'5210418881695603008',
 	'hagino3000'=>'-4570121095825315932',
 	'niryuu'=>'-4870892304015424950',
+	'retlet'=>'-132326932639008225',
+	'sora_h'=>'-7457841936955147163',
 	'ymrl' => '-3314371951151237192',
 	'sora_h' => '-7457841936955147163',
 }
@@ -83,7 +85,7 @@ post '/callback' do
 		name = text.scan(/^@(\w+)\s?/).first.first
 		puts name.inspect
 		if $users.has_key?(name)
-			result << "http://yuiseki.net:4589/#{name}.png?ts=#{Time.now.to_i.to_s}"
+			result << "http://yorupic.yuiseki.net/#{name}.png?ts=#{Time.now.to_i.to_s}"
 		else
 			result << "https://www.google.com/latitude/apps \nGoogle公開ロケーションバッジを有効にして、"+
 				"一番下の「デベロッパー情報」ってところにある公開JSONフィードのIDおしえて～"
