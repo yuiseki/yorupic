@@ -67,16 +67,16 @@ post '/callback' do
 	coll.insert(hash)
 	if text =~ /奥野|oquno/ then
 		result << "肛門括約筋"
-	else if text.include?("@")
-			  name = text.scan(/^@(\w+)\s?/).first.first
-			  puts name.inspect
-			  if $users.has_key?(name)
-				  result << "http://yuiseki.net:4589/#{name}.png?ts=#{Time.now.to_i.to_s}"
-			  else
-				  result << "https://www.google.com/latitude/apps \nGoogle公開ロケーションバッジを有効にして、"+
-					  "一番下の「デベロッパー情報」ってところにある公開JSONフィードのIDおしえて～"
-			  end
-		  end
+	end
+	if text.include?("@")
+		name = text.scan(/^@(\w+)\s?/).first.first
+		puts name.inspect
+		if $users.has_key?(name)
+			result << "http://yuiseki.net:4589/#{name}.png?ts=#{Time.now.to_i.to_s}"
+		else
+			result << "https://www.google.com/latitude/apps \nGoogle公開ロケーションバッジを有効にして、"+
+				"一番下の「デベロッパー情報」ってところにある公開JSONフィードのIDおしえて～"
+		end
 	end
 	result.join("\n")
 end
