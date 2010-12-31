@@ -22,7 +22,7 @@ $users = {'yuiseki'=>'4598697423011019361',
 get '/' do
 	resp = []
 	$users.each_key do |username|
-		resp << "<img src='/#{username}.png?ts=#{Time.now.to_i.to_s}'>"
+		resp << "@#{username}<br/><img src='/#{username}.png?ts=#{Time.now.to_i.to_s}'><hr>"
 	end
 	return resp.join('')
 end
@@ -71,9 +71,13 @@ post '/callback' do
 	}
 	coll = Mongo::Connection.new.db("lingr").collection("arakawatomonori")
 	coll.insert(hash)
-	if text =~ /奥野|oquno|おくの/ then
+	if text =~ /oquno|奥野|おくの|オクノ/ then
 		result << "肛門括約筋"
 	end
+	if text =~ /高野/ then
+		result << "ビールくれ"
+	end
+
 	if text.include?("@")
 		name = text.scan(/^@(\w+)\s?/).first.first
 		puts name.inspect
