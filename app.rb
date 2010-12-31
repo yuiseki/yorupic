@@ -55,9 +55,21 @@ get '/:username.png' do
 	redirect uri
 end
 
+get '/lingr_post' do
+	config = Pit.get("lingr.com", :require => {
+		"username" => "you email in twitter",
+		"password" => "your password in twitter"
+	})
+	begin
+	  @lingr = Lingr::Connection.new(config['username'], config['password'], 30, true, nil, nil)
+	  puts @lingr
+	  @lingr.say('arakawatomonori', 'test')
+	end
+	return ''
+end
+
 get '/lingr' do
-	#@lingr = Lingr::Connection.new(@user, @password, @backlog_count, true, @logger, @api_key)
-	redirect ''
+	redirect 'http://lingr.com/room/arakawatomonori'
 end
 
 post '/callback' do
