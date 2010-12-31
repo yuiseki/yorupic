@@ -78,8 +78,11 @@ post '/callback' do
 	if text =~ /oquno|奥野|おくの|オクノ/ then
 		result << "肛門括約筋"
 	end
-	if text =~ /高野/ then
+	if text =~ /高野|takano/ then
 		result << "ビールくれ"
+	end
+	if text =~ /マピ|まぴ|mapi/ then
+		result << "こいつは本当にクズですね"
 	end
 
 	if text.include?("@")
