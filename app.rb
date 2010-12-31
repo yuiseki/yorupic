@@ -65,7 +65,7 @@ post '/callback' do
 	}
 	coll = Mongo::Connection.new.db("lingr").collection("arakawatomonori")
 	coll.insert(hash)
-	if text =~ /奥野|oquno/ then
+	if text =~ /高野|oquno/ then
 		result << "肛門括約筋"
 	end
 	if text.include?("@")
