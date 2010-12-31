@@ -6,6 +6,8 @@ require 'cgi'
 require 'open-uri'
 require 'json'
 require 'mongo'
+require 'lingr.rb'
+require 'pit'
 
 $users = {'yuiseki'=>'4598697423011019361',
 	'oquno'=>'4601680445375420648',
@@ -48,6 +50,10 @@ get '/:username.png' do
 	puts uri
 	cache_control :no_cache
 	redirect uri
+end
+
+get '/lingr' do
+	#@lingr = Lingr::Connection.new(@user, @password, @backlog_count, true, @logger, @api_key)
 end
 
 post '/callback' do
