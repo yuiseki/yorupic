@@ -19,6 +19,7 @@ $users = {'yuiseki'=>'4598697423011019361',
 	'retlet'=>'-132326932639008225',
 	'sora_h'=>'-7457841936955147163',
 	'ymrl' => '-3314371951151237192',
+	'machicolony' => '-2594132176798582609',
 }
 
 get '/' do
@@ -56,6 +57,7 @@ end
 
 get '/lingr' do
 	#@lingr = Lingr::Connection.new(@user, @password, @backlog_count, true, @logger, @api_key)
+	redirect ''
 end
 
 post '/callback' do
