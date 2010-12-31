@@ -52,6 +52,7 @@ get '/:username.png' do
 end
 
 post '/callback' do
+	result = []
 	ling = JSON.parse(params['json'])
 	puts ling['events'].first['message'].inspect
 	text = ling['events'].first['message']['text']
@@ -66,18 +67,19 @@ post '/callback' do
 	coll = Mongo::Connection.new.db("lingr").collection("arakawatomonori")
 	coll.insert(hash)
 	if text =~ /奥野|oquno/ then
-		return "肛門括約筋"
+		result << "肛門括約筋"
 	else if text.include?("@")
 			  name = text.scan(/^@(\w+)\s?/).first.first
 			  puts name.inspect
 			  if $users.has_key?(name)
-				  return "http://yuiseki.net:4589/#{name}.png?ts=#{Time.now.to_i.to_s}"
+				  result << "http://yuiseki.net:4589/#{name}.png?ts=#{Time.now.to_i.to_s}"
 			  else
-				  return "https://www.google.com/latitude/apps \nGoogle公開ロケーションバッジを有効にして、"+
+				  result << "https://www.google.com/latitude/apps \nGoogle公開ロケーションバッジを有効にして、"+
 					  "一番下の「デベロッパー情報」ってところにある公開JSONフィードのIDおしえて～"
 			  end
 		  end
 	end
+	result.join("\n")
 end
 
 
