@@ -24,7 +24,7 @@ $users = {'yuiseki'=>'4598697423011019361',
 
 get '/' do
 	resp = []
-	$users.sort.each_key do |username|
+	$users.sort.each do |username, latitude|
 		resp << "@#{username}<br/><img src='/#{username}.png?ts=#{Time.now.to_i.to_s}'><hr>"
 	end
 	return resp.join('')
