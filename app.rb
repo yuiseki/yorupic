@@ -84,7 +84,7 @@ post '/callback' do
 	if text =~ /マピ|まぴ|mapi/ then
 		result << "こいつは本当にクズですね"
 	end
-	if text =~ /ダーク/ then
+	if text =~ /ダーク|ugdark/ then
 		result << "いっしょに風俗行こうよ！！！"
 	end
 	if text =~ /ノノリリ|nonoriri|ののりり/ then
