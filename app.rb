@@ -83,7 +83,7 @@ post '/callback' do
 		name = text.scan(/^@(\w+)\s?/).first.first
 		puts name.inspect
 		if $users.has_key?(name)
-			result << "http://yuiseki.net:4589/#{name}.png?ts=#{Time.now.to_i.to_s}"
+			result << "http://yorupic.yuiseki.net/#{name}.png?ts=#{Time.now.to_i.to_s}"
 		else
 			result << "https://www.google.com/latitude/apps \nGoogle公開ロケーションバッジを有効にして、"+
 				"一番下の「デベロッパー情報」ってところにある公開JSONフィードのIDおしえて～"
