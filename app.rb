@@ -15,7 +15,6 @@ $users = {'yuiseki'=>'4598697423011019361',
 	'hagino3000'=>'-4570121095825315932',
 	'niryuu'=>'-4870892304015424950',
 	'ymrl' => '-3314371951151237192',
-
 }
 
 get '/' do
@@ -43,8 +42,8 @@ get '/:username.png' do
 	lat = data['features'].first['geometry']['coordinates'][0]
 	lng = data['features'].first['geometry']['coordinates'][1]
 	uri = "http://maps.google.com/maps/api/staticmap?"+
-		"center=#{lng},#{lat}"+
-		"&zoom=15&size=500x100&sensor=false"+
+		"center=#{lng},#{lat}" +
+		"&zoom=15&size=500x100&sensor=false" +
 		"&markers=icon:#{data['features'].first['properties']['photoUrl']}|#{lng},#{lat}"
 	puts uri
 	cache_control :no_cache
@@ -57,12 +56,12 @@ post '/callback' do
 	puts ling['events'].first['message'].inspect
 	text = ling['events'].first['message']['text']
 	hash = {
-		'id'=> ling['events'].first['message']['id'],
-		'icon'=> ling['events'].first['message']['icon_url'],
-		'timestamp'=> ling['events'].first['message']['timestamp'],
-		'username'=> ling['events'].first['message']['speaker_id'],
-		'room'=> ling['events'].first['message']['room'],
-		'text'=> text
+		'id' => ling['events'].first['message']['id'],
+		'icon' => ling['events'].first['message']['icon_url'],
+		'timestamp' => ling['events'].first['message']['timestamp'],
+		'username' => ling['events'].first['message']['speaker_id'],
+		'room' => ling['events'].first['message']['room'],
+		'text' => text,
 	}
 	coll = Mongo::Connection.new.db("lingr").collection("arakawatomonori")
 	coll.insert(hash)
