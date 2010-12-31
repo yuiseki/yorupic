@@ -84,6 +84,12 @@ post '/callback' do
 	if text =~ /マピ|まぴ|mapi/ then
 		result << "こいつは本当にクズですね"
 	end
+	if text =~ /ダーク/ then
+		result << "いっしょに風俗行こうよ！！！"
+	end
+	if text =~ /ノノリリ|nonoriri|ののりり/ then
+		result << "やつがほんとうの荒川智則なのかッ？？？"
+	end
 
 	if text.include?("@")
 		name = text.scan(/^@(\w+)\s?/).first.first
