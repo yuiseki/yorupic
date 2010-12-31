@@ -20,7 +20,7 @@ $users = {'yuiseki'=>'4598697423011019361',
 get '/' do
 	resp = []
 	$users.each_key do |username|
-		resp << "<img src='/#{username}.png?ts=#{Time.now.to_i.to_s}'>"
+		resp << "@#{username}<br/><img src='/#{username}.png?ts=#{Time.now.to_i.to_s}'><hr>"
 	end
 	return resp.join('')
 end
