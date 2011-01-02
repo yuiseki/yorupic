@@ -93,7 +93,7 @@ post '/callback' do
 	if text =~ /高野|takano/ then
 		result << "ビールくれ"
 	end
-	if text =~ /マピ|まぴ|mapi/ then
+	if text =~ /マピ|まぴ|mapi|小池|こいけ|コイケ|りっくん/ then
 		result << "こいつは本当にクズですね"
 	end
 	if text =~ /ダーク|ugdark/ then
