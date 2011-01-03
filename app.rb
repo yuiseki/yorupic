@@ -55,7 +55,7 @@ get '/:username.png' do
 	redirect uri
 end
 
-get '/lingr_post' do
+get '/say' do
 	config = Pit.get("lingr.com", :require => {
 		"username" => "you email in twitter",
 		"password" => "your password in twitter"
@@ -104,6 +104,9 @@ post '/callback' do
 	end
 	if text =~ /うんこ|ウンコ|[Uu][Nn][Kk][Oo]/ then
 		result << "ショッキング！"
+	end
+	if text =~ /^[Dd]+/ then
+		result << "だるい"
 	end
 
 	if text.include?("@")
