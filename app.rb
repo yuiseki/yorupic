@@ -105,7 +105,7 @@ post '/callback' do
 	if text =~ /うんこ|ウンコ|[Uu][Nn][Kk][Oo]/ then
 		result << "ショッキング！"
 	end
-	if text =~ /^[Dd]+$/ then
+	if text =~ /^[Dd]+([:space:]*|$)/ then
 		result << "だるい"
 	end
 
