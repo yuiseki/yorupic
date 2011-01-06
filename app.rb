@@ -115,8 +115,9 @@ post '/callback' do
 		if $users.has_key?(name)
 			result << "http://yorupic.yuiseki.net/#{name}.png?ts=#{Time.now.to_i.to_s}"
 		else
-			result << "https://www.google.com/latitude/apps \nGoogle公開ロケーションバッジを有効にして、"+
-				"一番下の「デベロッパー情報」ってところにある公開JSONフィードのIDおしえて～"
+			result << "https://www.google.com/latitude/apps"
+			result << "Google公開ロケーションバッジを有効にして、"
+			result << "一番下の「デベロッパー情報」ってところにある公開JSONフィードのIDおしえて～"
 		end
 	end
 	result.join("\n")
