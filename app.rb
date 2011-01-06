@@ -90,7 +90,7 @@ post '/callback' do
 	if text =~ /oquno|奥野|おくの|オクノ/ then
 		result << "肛門括約筋"
 	end
-	if text =~ /高野|takano/ then
+	if text =~ /たかの|タカノ|高野|takano/ then
 		result << "ビールくれ"
 	end
 	if text =~ /マピ|まぴ|mapi|小池|こいけ|コイケ|りっくん/ then
