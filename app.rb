@@ -95,6 +95,9 @@ post '/callback' do
 	end
 	if text =~ /マピ|まぴ|mapi|小池|こいけ|コイケ|りっくん/ then
 		result << "こいつは本当にクズですね"
+		if username =~ /takano32/ then
+			result << "高野くん、今ちょっとうるさかった"
+		end
 	end
 	if text =~ /ダーク|ugdark/ then
 		result << "いっしょに風俗行こうよ！！！"
