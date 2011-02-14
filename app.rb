@@ -103,8 +103,9 @@ post '/callback' do
 		result << "ビールくれ"
 	end
 	if text =~ /マピ|まぴ|mapi|小池|こいけ|コイケ|りっくん/ then
-		result << "こいつは本当にクズですね"
-		if hash['username'] == "takano32" and text.length > 20 then
+		unless hash['username'] == "takano32" then
+			result << "こいつは本当にクズですね"
+		else
 			result << "高野くん、今少しうるさかった"
 		end
 	end
