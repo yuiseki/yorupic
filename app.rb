@@ -112,8 +112,8 @@ post '/callback' do
 		result << "だるい"
 	end
 
-	if text.include?("@")
-		name = text.scan(/^@(\w+)\s?/).first.first
+	if text =~ (/^L(\w+)\s?/) then
+		name = $1
 		puts name.inspect
 		if $users.has_key?(name)
 			result << "http://yorupic.yuiseki.net/#{name}.png?ts=#{Time.now.to_i.to_s}"
