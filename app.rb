@@ -72,6 +72,14 @@ get '/lingr' do
 	redirect 'http://lingr.com/room/arakawatomonori'
 end
 
+get '/bomb' do
+  verifier = Pie.get("lingr.com", :require => {
+		"verifier" => "bot verifier, see http://lingr.com/developer",
+  })
+  text = "%E7%B3%9E%E4%BE%BF%E7%B3%9E%E4%BE%BF"
+  res = open("http://lingr.com/api/room/say?room=arakawatomonori&bot=arakawatomonori_bot&text=#{text}&bot_verifier=#{verifier}")
+end
+
 post '/callback' do
 	result = []
   puts request.body.string
