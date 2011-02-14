@@ -74,7 +74,8 @@ end
 
 post '/callback' do
 	result = []
-	ling = JSON.parse(params['json'])
+  puts request.body.string
+	ling = JSON.parse(request.body.string)
 	puts ling['events'].first['message'].inspect
 	text = ling['events'].first['message']['text']
 	hash = {
