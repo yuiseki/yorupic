@@ -113,7 +113,7 @@ post '/callback' do
 		result << "だるい"
 	end
 
-	if text =~ (/^L(\w+)\s?/) then
+	if text =~ (/^L:(\w+)\s?/) then
 		name = $1
 		puts name.inspect
 		if $users.has_key?(name)
