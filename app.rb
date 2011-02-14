@@ -96,7 +96,7 @@ post '/callback' do
 	end
 	if text =~ /マピ|まぴ|mapi|小池|こいけ|コイケ|りっくん/ then
 		result << "こいつは本当にクズですね"
-		if username == "takano32" then
+		if hash['username'] == "takano32" then
 			result[-1] = "高野くん、今少しうるさかった"
 		end
 	end
