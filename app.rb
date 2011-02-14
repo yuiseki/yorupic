@@ -96,8 +96,8 @@ post '/callback' do
 	end
 	if text =~ /マピ|まぴ|mapi|小池|こいけ|コイケ|りっくん/ then
 		result << "こいつは本当にクズですね"
-		if hash['username'] == "takano32" then
-			result[-1] = "高野くん、今少しうるさかった"
+		if hash['username'] == "takano32" and text.length > 20 then
+			result << "高野くん、今少しうるさかった"
 		end
 	end
 	if text =~ /ダーク|ugdark/ then
@@ -113,7 +113,7 @@ post '/callback' do
 		result << "だるい"
 	end
 
-	if text =~ (/^L:(\w+)\s?/) then
+	if text =~ /^L:(\w+)\s?/ then
 		name = $1
 		puts name.inspect
 		if $users.has_key?(name)
