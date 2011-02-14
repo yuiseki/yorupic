@@ -91,11 +91,14 @@ post '/callback' do
 	if text =~ /oquno|奥野|おくの|オクノ/ then
 		result << "肛門括約筋"
 	end
-	if text =~ /高野|takano/ then
+	if text =~ /たかの|タカノ|高野|takano/ then
 		result << "ビールくれ"
 	end
 	if text =~ /マピ|まぴ|mapi|小池|こいけ|コイケ|りっくん/ then
 		result << "こいつは本当にクズですね"
+		if username == "takano32" then
+			result[-1] = "高野くん、今少しうるさかった"
+		end
 	end
 	if text =~ /ダーク|ugdark/ then
 		result << "いっしょに風俗行こうよ！！！"
@@ -106,18 +109,19 @@ post '/callback' do
 	if text =~ /うんこ|ウンコ|[Uu][Nn][Kk][Oo]/ then
 		result << "ショッキング！"
 	end
-	if text =~ /^[Dd]+/ then
+	if text =~ /^[:space:]*[Dd]+([:space:]*|$)/ then
 		result << "だるい"
 	end
 
-	if text.include?("@")
-		name = text.scan(/^@(\w+)\s?/).first.first
+	if text =~ (/^L(\w+)\s?/) then
+		name = $1
 		puts name.inspect
 		if $users.has_key?(name)
 			result << "http://yorupic.yuiseki.net/#{name}.png?ts=#{Time.now.to_i.to_s}"
 		else
-			result << "https://www.google.com/latitude/apps \nGoogle公開ロケーションバッジを有効にして、"+
-				"一番下の「デベロッパー情報」ってところにある公開JSONフィードのIDおしえて～"
+			result << "https://www.google.com/latitude/apps"
+			result << "Google公開ロケーションバッジを有効にして、"
+			result << "一番下の「デベロッパー情報」ってところにある公開JSONフィードのIDおしえて～"
 		end
 	end
 	result.join("\n")
