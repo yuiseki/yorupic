@@ -24,7 +24,7 @@ $users = {'yuiseki'=>'4598697423011019361',
 get '/' do
 	resp = []
 	$users.sort.each do |username, latitude|
-		resp << "@#{username}<br/><img src='/#{username}.png?ts=#{Time.now.to_i.to_s}'><hr>"
+		resp << "@#{username}<br/><img src='/#{username}/#{Time.now.to_i.to_s}/location.png'><hr>"
 	end
 	return resp.join('')
 end
@@ -40,7 +40,7 @@ get '/log' do
 	return @resp.join('')
 end
 
-get '/:username.png' do
+get '/:username/:timestamp/location.png' do
 	badge = "https://www.google.com/latitude/apps/badge/api?user=#{$users[params[:username]]}&type=json"
 	data = JSON.parse(open(badge).read())
 	lat = data['features'].first['geometry']['coordinates'][0]
