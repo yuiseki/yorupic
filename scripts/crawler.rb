@@ -42,7 +42,7 @@ $users.each_key do |username|
     # 場所も変わってるか確認する
     unless results['rgeo'] == rgeo
         # lingrに通知する
-        uri = "http://yorupic.yuiseki.net/#{username}.png?ts=#{Time.now.to_i.to_s}"
+        uri = "http://yorupic.yuiseki.net/#{username}/#{hash['time']}/location.png"
         text = URI.encode("#{username} #{Time.at(hash['time']).strftime('%H:%M')} #{hash['rgeo']}\n#{uri}")
         res = open("http://lingr.com/api/room/say?room=arakawatomonori&bot=arakawatomonori_bot&text=#{text}&bot_verifier=#{$setting['verifier']}")
     end
