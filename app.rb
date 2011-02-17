@@ -125,7 +125,7 @@ post '/callback' do
 		name = $1
 		puts name.inspect
 		if $users.has_key?(name)
-			result << "http://yorupic.yuiseki.net/#{name}.png?ts=#{Time.now.to_i.to_s}"
+			result << "http://yorupic.yuiseki.net/#{name}/#{Time.now.to_i.to_s}/location.png"
 		else
 			result << "https://www.google.com/latitude/apps"
 			result << "Google公開ロケーションバッジを有効にして、"
