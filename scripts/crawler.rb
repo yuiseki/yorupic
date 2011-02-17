@@ -35,12 +35,12 @@ $users.each_key do |username|
           'lat'=>lat, 'lng'=>lng, 'accurancy'=>accuracy,
           'rgeo'=>rgeo, 'time'=>time}
   # 更新時刻が変わってたら
-  results = $coll.find({'time'=>time},{:sort=>['time', 'descending'], :limit=>1})
-  unless results.first
+  results = $coll.find({'user'=>username},{:sort=>['time', 'descending'], :limit=>1}).first.dup()
+  unless results['time'] == time
     # DBに記録する
     $coll.insert(hash)
     # 場所も変わってるか確認する
-    unless hash['rgeo'] == results.first['rgeo']
+    unless results['rgeo'] == rgeo
         # lingrに通知する
         uri = "http://yorupic.yuiseki.net/#{username}.png?ts=#{Time.now.to_i.to_s}"
         text = URI.encode("#{username} #{Time.at(hash['time']).strftime('%H:%M')} #{hash['rgeo']}\n#{uri}")
