@@ -6,7 +6,6 @@ require 'cgi'
 require 'open-uri'
 require 'json'
 require 'mongo'
-require 'lingr.rb'
 require 'pit'
 
 $users = {'yuiseki'=>'4598697423011019361',
@@ -73,7 +72,7 @@ get '/lingr' do
 end
 
 get '/bomb' do
-  verifier = Pie.get("lingr.com", :require => {
+  verifier = Pit.get("lingr.com", :require => {
 		"verifier" => "bot verifier, see http://lingr.com/developer",
   })
   text = "%E7%B3%9E%E4%BE%BF%E7%B3%9E%E4%BE%BF"
